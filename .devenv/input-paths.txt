@@ -1,0 +1,7 @@
+/home/jan/devenv/JAM/.devenv/flake.json
+/home/jan/devenv/JAM/.devenv.flake.nix
+/home/jan/devenv/JAM/.env
+/home/jan/devenv/JAM/devenv.local.nix
+/home/jan/devenv/JAM/devenv.lock
+/home/jan/devenv/JAM/devenv.nix
+/home/jan/devenv/JAM/devenv.yaml
