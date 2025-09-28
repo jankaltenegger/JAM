@@ -5,6 +5,8 @@ out
 .eslintcache
 *.log*
 
+backend/.env
+
 # Devenv
 .direnv
 build
