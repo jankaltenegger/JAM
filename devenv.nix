@@ -40,7 +40,10 @@
   '';
 in {
   languages = {
-    python.enable = true;
+    python = {
+      enable = true;
+      package = pkgs.python313;
+    };
     javascript = {
       enable = true;
       npm.enable = true;
@@ -48,7 +51,14 @@ in {
     };
   };
 
-  packages = [runld electron] ++ electronLibs;
+  packages = [runld electron] ++ electronLibs ++ [
+    # Python packages for job scraping
+    pkgs.python313Packages.pip
+    pkgs.python313Packages.pandas
+    pkgs.python313Packages.requests
+    pkgs.python313Packages.beautifulsoup4
+    pkgs.python313Packages.selenium
+  ];
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;

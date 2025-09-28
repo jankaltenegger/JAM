@@ -23,6 +23,7 @@
     "express-rate-limit": "^8.1.0",
     "helmet": "^7.1.0",
     "joi": "^17.13.3",
+    "playwright": "^1.55.1",
     "redis": "^4.7.0",
     "stagehand": "^1.0.0",
     "uuid": "^10.0.0",
