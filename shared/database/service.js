@@ -117,16 +117,14 @@ class DatabaseService {
       // Get paginated results
       const dataQuery = `
         SELECT ja.*, 
-               GROUP_CONCAT(s.skill_name) as skills,
-               GROUP_CONCAT(e.email) as emails,
-               GROUP_CONCAT(a.address) as addresses
+               GROUP_CONCAT(s.name) as skills,
+               GROUP_CONCAT(jae.email) as emails,
+               GROUP_CONCAT(jaa.address) as addresses
         FROM job_applications ja
-        LEFT JOIN job_skills js ON ja.id = js.job_id
+        LEFT JOIN job_application_skills js ON ja.id = js.job_application_id
         LEFT JOIN skills s ON js.skill_id = s.id
-        LEFT JOIN job_emails je ON ja.id = je.job_id
-        LEFT JOIN emails e ON je.email_id = e.id
-        LEFT JOIN job_addresses jad ON ja.id = jad.job_id
-        LEFT JOIN addresses a ON jad.address_id = a.id
+        LEFT JOIN job_application_emails jae ON ja.id = jae.job_application_id
+        LEFT JOIN job_application_addresses jaa ON ja.id = jaa.job_application_id
         ${whereClause}
         GROUP BY ja.id
         ORDER BY ja.date_posted DESC, ja.created_at DESC
@@ -265,7 +263,7 @@ class DatabaseService {
       // Insert skills
       if (job.skills && job.skills.length > 0) {
         const insertSkill = this.db.prepare('INSERT OR IGNORE INTO skills (skill_name) VALUES (?)')
-        const insertJobSkill = this.db.prepare('INSERT INTO job_skills (job_id, skill_id) VALUES (?, ?)')
+        const insertJobSkill = this.db.prepare('INSERT INTO job_application_skills (job_application_id, skill_id) VALUES (?, ?)')
         const getSkillId = this.db.prepare('SELECT id FROM skills WHERE skill_name = ?')
 
         for (const skill of job.skills) {
