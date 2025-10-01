@@ -12,6 +12,7 @@
     "test": "echo 'Tests coming soon'"
   },
   "dependencies": {
+        "@browserbasehq/stagehand": "^2.5.0",
     "@mastra/core": "^0.18.0",
     "@mastra/engine": "^0.1.0-alpha.84",
     "axios": "^1.7.7",
@@ -25,7 +26,6 @@
     "joi": "^17.13.3",
     "playwright": "^1.55.1",
     "redis": "^4.7.0",
-    "stagehand": "^1.0.0",
     "uuid": "^10.0.0",
     "winston": "^3.15.0"
   },

@@ -1,6 +1,6 @@
 import { JobScrapingService } from './jobScrapingService.js'
 import { AutomationService } from './automationService.js'
-import { MastraService } from './mastraService.js'
+import { RealMastraService } from './realMastraService.js'
 import { databaseService } from '../../../shared/database/service.mjs'
 import { logger } from '../utils/logger.js'
 
@@ -29,8 +29,8 @@ export async function initializeServices() {
     automationService = new AutomationService()
     await automationService.initialize()
     
-    // Initialize workflow orchestration (Mastra integration)
-    mastraService = new MastraService()
+    // Initialize workflow orchestration (Real Mastra integration)
+    mastraService = new RealMastraService()
     await mastraService.initialize()
     
     logger.info('✅ All services initialized successfully')

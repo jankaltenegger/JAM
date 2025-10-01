@@ -58,12 +58,26 @@ in {
     pkgs.python313Packages.requests
     pkgs.python313Packages.beautifulsoup4
     pkgs.python313Packages.selenium
+    
+    # Browser automation dependencies
+    pkgs.chromium
+    pkgs.firefox
+    pkgs.libudev-zero  # Additional lib for browser automation
+    pkgs.udev  # Device management
   ];
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
     ELECTRON_OVERRIDE_DIST_PATH = "${electron}/bin";
     ELECTRON_EXEC_PATH = "${electron}/libexec/electron/electron";
+    
+    # Browser automation environment
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.chromium}/bin";
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
+    CHROMIUM_PATH = "${pkgs.chromium}/bin/chromium";
+    
+    # Additional browser libs path for runtime
+    BROWSER_LIBRARY_PATH = pkgs.lib.makeLibraryPath electronLibs;
   };
 
   # Optional: uncomment to avoid typing `runld'

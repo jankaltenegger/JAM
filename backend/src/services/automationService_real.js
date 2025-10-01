@@ -21,7 +21,7 @@ export class AutomationService {
       
       // Try to load Stagehand
       try {
-        const { Stagehand } = await import('stagehand')
+        const { Stagehand } = await import('@browserbasehq/stagehand')
         this.StagehandClass = Stagehand
         this.stagehandAvailable = true
         logger.info('✅ Stagehand imported successfully')
